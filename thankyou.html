@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Thank You</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .message {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #aaa;
+    text-align: center;
+  }
+  button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #b02a37;
+  }
+</style>
+</head>
+<body>
+  <div class="message">
+    <h1>Thank you for logging in!</h1>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+<script>
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+  }
+
+  // Optional: Redirect if not logged in
+  window.onload = function() {
+    if (!localStorage.getItem("loggedInUser")) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+    }
+  };
+</script>
+</body>
+</html>

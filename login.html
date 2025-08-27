@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #aaa;
+    width: 320px;
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .google-btn {
+    background: white;
+    color: #444;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .google-btn img {
+    width: 20px;
+    margin-right: 8px;
+  }
+  p {
+    margin-top: 15px;
+  }
+  p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  p a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+
+    <button class="google-btn" onclick="googleLogin()">
+    
+      Continue with Google
+    </button>
+
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+
+<script>
+  function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+
+    if (!email || !password) {
+      alert("Please enter email and password.");
+      return;
+    }
+
+    if (email === storedEmail && password === storedPassword) {
+      localStorage.setItem("loggedInUser", email); // Save login state
+      window.location.href = "thankyou.html";
+    } else {
+      alert("Invalid email or password.");
+    }
+  }
+
+  function googleLogin() {
+    // Simulate Google login by logging in a demo user
+    localStorage.setItem("loggedInUser", "googleuser@example.com");
+    alert("Logged in with Google!");
+    window.location.href = "thankyou.html";
+  }
+</script>
+</body>
+</html>
